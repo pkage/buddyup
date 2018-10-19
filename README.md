@@ -9,6 +9,7 @@ Backend:
 Frontend:
 
  - [React.js](https://reactjs.org)
+ - [Parcel-bundler](https://parceljs.org)
 
 Other technology:
 

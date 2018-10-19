@@ -1,0 +1,19 @@
+{
+  "name": "buddyup",
+  "version": "1.0.0",
+  "description": "## Tech stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkage/buddyup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pkage/buddyup/issues"
+  },
+  "homepage": "https://github.com/pkage/buddyup#readme"
+}
