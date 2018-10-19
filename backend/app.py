@@ -11,7 +11,7 @@ async def handle(request):
     return web.Response(text=text)
 
 async def redirect_to_index(req):
-    return web.HTTPFound('/index.html') 
+    raise web.HTTPFound('/index.html') 
 
 app = web.Application()
 app.add_routes([
