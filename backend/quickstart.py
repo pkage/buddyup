@@ -1,5 +1,6 @@
 from __future__ import print_function
 import datetime
+import json
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
@@ -15,7 +16,6 @@ def getUpcoming(service, calendar_id, year_end, month_end, day_end):
     events_result = service.events().list(calendarId=calendar_id, timeMin=now.isoformat()+'Z',
                                         singleEvents=True, timeMax=end.isoformat() + 'Z',
                                         orderBy='startTime').execute()
-    print(events_result)
     return events_result
 
 # same as above but only gets free/busy status
@@ -28,8 +28,18 @@ def getBusy(service, calendar_id, year_end, month_end, day_end):
         "items": [{'id':calendar_id}]
     }
     busy_result = service.freebusy().query(body=body).execute()
-    print(busy_result)
     return busy_result
+
+# returns dictionary of user calendar ids and descriptions
+# id may be passed to getBusy or getUpcoming
+def getCalendars(service):
+    calendar_list = service.calendarList().list().execute()
+    calendars = {}
+    for cal in calendar_list["items"]:
+        id = cal["id"]
+        desc = cal["summary"]
+        calendars[id] = desc
+    return calendars
 
 # authenticates the user and gets service started
 def main():
@@ -39,8 +49,7 @@ def main():
         flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
         creds = tools.run_flow(flow, store)
     service = build('calendar', 'v3', http=creds.authorize(Http()))
-    getUpcoming(service, 'primary', 2018,10,31)
-    getBusy(service, 'primary', 2018,10,31)
+    getCalendars(service)
 
 if __name__ == '__main__':
     main()
