@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "buddyup-63139",
+  "private_key_id": "a6b00771156ea71aa3508c90f5ab9be6f51fdb28",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC/LDK+s/JftkCp\nbelFqPoI1tdlx+ZvwN6a1pXugQXV7R7E4+PtA0YGLNuTbZ3Nj9p/E9+eilrPHy1/\ngQKhsSlVSqc8++gkJYjZk0Zzisb1MgYSTPqNHuWDtzp/w2ATdcEjDS8GD7Hm/2pv\nF+7dUGj+LAVbolfNRRk0v9KmAqCCj98YG1a7MfHMtd5rc/n1dycoYMBl0gFXeW6E\nf1QfD4g22GteT7qLWpcncNuerus5+a3H8woeSM7LtcSxpoeI52iLFq9CR+XLCR8s\nIY74lJQdbFaScNSvPOLPMroM0MMHBaWyktqoN02SgJCYAgg2Z92d3SuNp2gzStQM\nPB0QfNMHAgMBAAECggEAPouV0Jmr/w9wKV6J1t4Za8Hqd+TGaiKWUd9J712sDJkH\nG5CZlgYfp06OyjWvTr01VaUpYMPQQPpo1tHdDAybwslpXMTn5seW9eQ+xPeO71Kd\n9OfVg00r9wN/8qP3r3YzqaWbEGcbI8HFzzHr1uGDcEDzwc6j3kcwn3bw0pqCbCRX\nkP5pu/YNHc/tyTCq4fwRz4u0yZx8R1q1MMTrIfBrMhBkR1Q4tBKifukDzjaHtFLq\naX1dGeuNOrW3qzP4OAxsuzzw3LqOox/RZqd36Or/bekFkD5Uq/FkD9hKB0FAV6LG\nmTLfxYKAxXg9CjRAH+KpBIc9PHj7zXGVohfj9G9fKQKBgQDyivYiCyO9RpTN8NiQ\nJ23fQlFhtT3qUYnqOjNxFaJQOUTU5heOX9FtIbWup6QHvx4tiZcxH/CGPU9R6rvP\ne9KMRCoawIkrm9iVur419ntfhK9qqBgJyPOHGZX0YKxlytgENLeEBb9KmBAle02F\n1BwfYOIw9PTnuXjZiZUKRq/MiQKBgQDJx5VSFAVtweQ/4hZDdyQzaL/LnBTE0OB1\n50f6VRks23DHt54zae7w+BieBeWuJGDixOhCts7H4zNrp/TI6907LQmOVQPJZ6z8\n0fxhiMnkt30X7tx5U2yoPpoCesZmQz0w7Tp6d2NPq/eGd1QBMoXOTnTp2U4X+gDv\ngAODnMFfDwKBgQCIbaIFhD6WOR16uf8XFxa2fpdIXqp1I2hwWEyXT5P9jDkriEG3\n1C35NPz9QU8DDH3tH3fsKgshd1smuOLr0rqcK7uDUMnXvdIWZvSXZg3/rKL/W44p\n8t8JH1s6GybeGztnIkAYAyOW0fJDIxh4LteiztxsrV0U+z7/HmS3YwuAAQKBgQCi\nM2fbJPEAO96JY+rVrM5S7R9QQ1WGqQnmfVak6wdjwbq1MOthFQTYe/b+AGuTQvcH\nE5ZJGr66e+732XmykbezPA70dW6n1kl+qiYhGV6CFuXd+UsN1HwB+uC+oYce6Wol\nDG33yETy5KADXaUPmVdqcjMVUHOwXm2mGNe6UqY3DQKBgCHERqgGF2sv6aPl2nxn\nbr/FoX0yAwVZka6cBAHfCRiEe6Ikzjicw3cgoU/6mwxRFIaMDXHwmJpJBqYXgG15\ndfuJIVN1vhmXFLlb75nTME6SaEC27rPzqpeLEIKcPj42xxr9gGi4p/+gGTwNFxD2\ntvVaEPCfCE+Z2+g1L6Aaol69\n-----END PRIVATE KEY-----\n",
+  "client_email": "dialogflow-qhorck@buddyup-63139.iam.gserviceaccount.com",
+  "client_id": "109020956459527288652",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-qhorck%40buddyup-63139.iam.gserviceaccount.com"
+}
