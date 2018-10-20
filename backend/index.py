@@ -8,6 +8,7 @@ import json
 import pusher
 import dialogflow_v2 as dialogflow
 import maps
+import quickstart
 
 ################## to be saved
 user_location = "" # string
@@ -35,10 +36,16 @@ def detect_intent_texts(project_id, session_id, text, language_code):
         if response.query_result.intent.display_name == "setup_location":
             value = response.query_result.parameters["City"]
             user_location = maps.getCityLocation(value)
-            nearbyUnis = maps.getUnisNearby(user_location, 1000)
+            #nearbyUnis = maps.getUnisNearby(user_location, 1000)
+            print("User location:", user_location)
 
         if response.query_result.intent.display_name == "setup_university":
             user_university = response.query_result.parameters["University"]
+            print("University:", user_university)
+
+        if response.query_result.intent.display_name == "setup_calendar":
+            #service = quickstart.auth()
+            #print(quickstart.getCalendars(service))
 
         return response.query_result.fulfillment_text
 
