@@ -19,7 +19,7 @@ def getGymsNearby(location, radius):
 
 # search for nearby universities
 def getUnisNearby(location, radius):
-    return getPlaces(location, radius, 'university', 'university')
+    return getPlaces(location, radius, 'university', 'school')
 
 # returns location of a specified place ID in
 # format of "lat, lng" coordinates
@@ -33,4 +33,5 @@ def getPlaceLocation(place_id):
     return str(lat) + ',' + str(lng)
 
 if __name__ == '__main__':
-    print(getPlaceLocation('ChIJ92fw0IC4h0gRECQZZTqJEMk')) # test, Edinburgh Uni location ID
+    # test, Edinburgh location ID given
+    print(getGymsNearby(getPlaceLocation('ChIJ92fw0IC4h0gRECQZZTqJEMk'), 1000))
