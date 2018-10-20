@@ -4,6 +4,7 @@ import json
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
+import flask
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/calendar.readonly'
@@ -42,14 +43,32 @@ def getCalendars(service):
     return calendars
 
 # authenticates the user and gets service started
-def main():
-    store = file.Storage('token.json')
-    creds = store.get()
-    if not creds or creds.invalid:
-        flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
-        creds = tools.run_flow(flow, store)
+def auth():
+    if 'credentials' not in flask.session:
+        oauth2callback()
+    credentials = client.OAuth2Credentials.from_json(flask.session['credentials'])
+    if credentials.access_token_expired:
+        oauth2callback()
+    http_auth = credentials.authorize(httplib2.Http())
+    # store = file.Storage('token.json')
+    # creds = store.get()
+    # if not creds or creds.invalid:
+    #     flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
+    #     creds = tools.run_flow(flow, store)
     service = build('calendar', 'v3', http=creds.authorize(Http()))
-    getCalendars(service)
+    return service
 
-if __name__ == '__main__':
-    main()
+
+def oauth2callback():
+  flow = client.flow_from_clientsecrets(
+      'credentials.json',
+      SCOPES,
+      redirect_uri='localhost:8000')
+
+  if 'code' not in flask.request.args:
+    auth_uri = flow.step1_get_authorize_url()
+    return flask.redirect(auth_uri)
+  else:
+    auth_code = flask.request.args.get('code')
+    credentials = flow.step2_exchange(auth_code)
+    flask.session['credentials'] = credentials.to_json()
