@@ -44,6 +44,15 @@ def get_free_intervals(busy_intervals, start_date, end_date):
     """
     if len(busy_intervals) == 0:
         return []
+    elif len(busy_intervals) == 1:
+        if (start_date >= busy_intervals[0][0] and end_date <= busy_intervals[0][1]):
+            return []
+        elif (start_date > busy_intervals[0][0]):
+            return [(busy_intervals[0][1], end_date)]
+        elif (end_date < busy_intervals[0][1]):
+            return [(start_date, busy_intervals[0][0])]
+        else:
+            return [(start_date, busy_intervals[0][0]), (busy_intervals[0][1], end_date)]
     elif (start_date >= end_date or start_date > busy_intervals[-1][1] or end_date < busy_intervals[0][0]):
         return []
 
@@ -182,5 +191,27 @@ d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 21, 
 print(d)
 print("\n12")
 c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 21, 4, 20))
+print(d)
+json_data3 = """
+{
+"kind": "calendar#freeBusy",
+"timeMin": "2018-10-19T22:59:45.000Z",
+"timeMax": "2018-10-31T22:59:45.000Z",
+"calendars": {
+ "primary": {
+  "busy": [
+   {
+    "start": "2018-10-20T02:30:00Z",
+    "end": "2018-10-20T04:30:00Z"
+   }
+  ]
+ }
+}
+}
+"""
+print("\n13")
+c = get_busy_intervals([parse(json_data3).busy_dates])
+print(c)
 d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 21, 4, 20))
 print(d)
