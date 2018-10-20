@@ -42,8 +42,48 @@ def get_free_intervals(busy_intervals, start_date, end_date):
     :param end_date: End date of the free intervals
     :return: List of free intervals in the chosen interval
     """
-    #todo
+    if len(busy_intervals) == 0:
+        return []
+    elif (start_date >= end_date or start_date > busy_intervals[-1][1] or end_date < busy_intervals[0][0]):
+        return []
 
+    modified_busy_intervals = []
+    add = False
+    for pos,b in enumerate(busy_intervals):
+        if (start_date < b[0] and not add):
+            modified_busy_intervals.append((start_date, start_date))
+            modified_busy_intervals.append((b[0], b[1]))
+            add = True
+            continue
+        elif (start_date >= b[0] and start_date <= b[1] and not add):
+            modified_busy_intervals.append((start_date, b[1]))
+            add = True
+            continue
+        elif (end_date >= b[0] and end_date <= b[1] and add):
+            modified_busy_intervals.append((b[0], end_date))
+            add = False
+            break
+        elif (end_date < b[0] and add):
+            modified_busy_intervals.append((end_date, end_date))
+            add = False
+            break
+        elif (end_date > b[1] and add and (pos == len(busy_intervals) - 1)):
+            modified_busy_intervals.append((b[0], b[1]))
+            modified_busy_intervals.append((end_date, end_date))
+            add = False
+            break
+        elif (add):
+            modified_busy_intervals.append((b[0], b[1]))
+
+    free_intervals = []
+    for pos,b in enumerate(modified_busy_intervals):
+        if pos == len(modified_busy_intervals) - 1:
+            break
+        free_intervals.append((b[1], modified_busy_intervals[pos+1][0]))
+
+    return free_intervals
+
+# Lol ignore these "tests" sleep deprivation
 
 json_data1 = """
 {
@@ -77,6 +117,14 @@ json_data2 = """
    {
     "start": "2018-10-20T04:30:00Z",
     "end": "2018-10-20T05:30:00Z"
+   },
+   {
+    "start": "2018-10-21T04:30:00Z",
+    "end": "2018-10-21T05:30:00Z"
+   },
+   {
+    "start": "2018-10-22T04:30:00Z",
+    "end": "2018-10-22T05:30:00Z"
    }
   ]
  }
@@ -87,4 +135,52 @@ json_data2 = """
 p1 = parse(json_data1)
 p2 = parse(json_data2)
 list_of_calendars = [p1.busy_dates, p2.busy_dates]
-print(get_busy_intervals(list_of_calendars))
+c = get_busy_intervals(list_of_calendars)
+print(c)
+d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 22, 5, 30))
+print("\n1")
+print(d)
+print("\n2")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 20, 2, 50), datetime(2018, 10, 22, 5, 30))
+print(d)
+print("\n3")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 20, 19, 50), datetime(2018, 10, 22, 5, 30))
+print(d)
+print("\n4")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 21, 4, 30), datetime(2018, 10, 22, 5, 30))
+print(d)
+print("\n5")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 21, 5, 50), datetime(2018, 10, 22, 5, 30))
+print(d)
+print("\n6")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 22, 5, 40))
+print(d)
+print("\n7")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 22, 5, 20))
+print(d)
+print("\n8")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 22, 4, 30))
+print(d)
+print("\n9")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 22, 4, 20))
+print(d)
+print("\n10")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 21, 5, 30))
+print(d)
+print("\n11")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 21, 5, 20))
+print(d)
+print("\n12")
+c = get_busy_intervals(list_of_calendars)
+d = get_free_intervals(c, datetime(2018, 10, 19, 4, 50), datetime(2018, 10, 21, 4, 20))
+print(d)
