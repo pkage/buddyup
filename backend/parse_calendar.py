@@ -19,3 +19,6 @@ def parse(calendar_json):
         busy_dates.append((start_dt, end_dt))
 
     return UserCalendar(name, time_min_dt, time_max_dt, busy_dates)
+
+if __name__ == "__main__":
+    pass
