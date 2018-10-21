@@ -1,33 +1,66 @@
 <!doctype html>
 <html lang="en">
-  <head>
-      <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>BuddyUp</title>
-  </head>
-  <body>
-      <div class="container h-100">
-        <div class="row align-items-center h-100">
-            <div class="col-md-8 col-sm-12 mx-auto">
-                <div class="h-100 justify-content-center">
-                    <div class="chat-container" style="overflow: auto; max-height: 80vh">
-                        <!-- chat messages -->
-                    </div>
-                    <form id="target">
-                       <input class="input" type="text" value="" placeholder="Enter message..." id="input_message"/>
-                       <input type="submit" hidden>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-    <script src="{{ url_for('static', filename='custom.js')}}"></script>
-  </body>
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"-->
+	<link rel="stylesheet" href="{{ url_for('static', filename='page.css') }}">
+	<title>BuddyUp</title>
+</head>
+
+<body>
+	<div class="info">
+		Made with &lt;3 by
+		<a href="#">Liana Ahmed</a>,
+		<a href="https://www.linkedin.com/in/andrius-girdzius" target="_blank">Andrius Girdžius</a>,
+		<a href="https://kagelabs.org" target="_blank">Patrick Kage</a>, &amp;
+		<a href="https://github.com/KaroliShp" target="_blank">Karolis &Scaron;pukas</a>
+		at <a href="https://hackupc.com/" target="_blank">HackUPC 2018</a>.
+		See our <a href="https://devpost.com/software/buddyup-gr24hf" target="_blank">devpost</a> and <a href="https://github.com/pkage/buddyup" target="_blank">source code</a>.
+	</div>
+	<div class="mainpage">
+		<div class="device-outer">
+			<div class="device-detail">
+				<span class="device-camera device-camera-hidden"></span>
+				<span class="device-speaker"></span>
+				<span class="device-camera"></span>
+			</div>
+			<div class="device-inner">
+				<div class="chat-outer">
+					<div class="chat-container">
+						<!-- chat messages -->
+						<div class="chat-message">
+							<div class="chat-message-inner">
+							Hi! Welcome to BuddyUp! Let me know how I can help.
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="input-container">
+					<form id="target">
+						<input
+		   					class="input"
+		  					type="text"
+		 					value=""
+							placeholder="Enter message..."
+	   						id="input_message"
+						 	autocomplete="off"
+							autofocus/>
+						<input type="submit" hidden>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+	<script src="{{ url_for('static', filename='custom.js')}}"></script>
+</body>
+
 </html>

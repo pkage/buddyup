@@ -1,0 +1,12 @@
+
+@mixin media($breakpoint) {
+	@media (min-width: $breakpoint) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@include media(1000px) {
+		@content;
+	}
+}

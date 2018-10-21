@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:400,600");
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:400,600");
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0; }
+
+hr {
+  width: 40%;
+  margin-right: 60%; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; }
+
+.text-primary {
+  color: #fc5c65; }
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; }
+  .grid > .column {
+    display: block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0; }
+
+.level {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start; }
+  .level > .level-spacer {
+    flex-grow: 1; }
+
+.container {
+  margin-left: 10px;
+  margin-right: 10px; }
+  @media (min-width: 1000px) {
+    .container {
+      margin-left: 10%;
+      margin-right: 10%; } }
+
+.clickable {
+  cursor: pointer; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; }
+
+.info {
+  display: none;
+  max-width: 20em;
+  font-size: 0.7em;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 400;
+  color: #84817a;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  user-select: none;
+  opacity: 0.7; }
+  @media (min-width: 1000px) {
+    .info {
+      display: block; } }
+  .info > a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.1s cubic-bezier(0, 0, 0.3, 1); }
+    .info > a:hover {
+      color: #ff793f; }
+
+@keyframes loading {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0.7; }
+  100% {
+    opacity: 1; } }
+.mainpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #f7f1e3;
+  height: 100vh;
+  overflow-x: hidden;
+  user-select: none; }
+
+.device-outer {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch; }
+  @media (min-width: 1000px) {
+    .device-outer {
+      background-color: white;
+      border-top-left-radius: 100px;
+      border-top-right-radius: 100px;
+      border: 3px solid #84817a;
+      background-color: white;
+      border-bottom: 0px;
+      width: 30vw;
+      height: 85vh;
+      padding-top: 55px;
+      padding-left: 60px;
+      padding-right: 60px;
+      flex-grow: 0; } }
+
+.device-detail {
+  display: none;
+  margin-bottom: 50px; }
+  @media (min-width: 1000px) {
+    .device-detail {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around; } }
+  .device-detail > .device-speaker {
+    border-radius: 2px;
+    border: 2px solid #84817a;
+    width: 50%; }
+  .device-detail > .device-camera {
+    border-radius: 5px;
+    border: 2px solid #84817a;
+    background-color: #aaa69d;
+    width: 5px;
+    height: 5px; }
+    .device-detail > .device-camera.device-camera-hidden {
+      opacity: 0; }
+
+.device-inner {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start; }
+  @media (min-width: 1000px) {
+    .device-inner {
+      border: 1px solid #84817a;
+      border-bottom: none;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding: 5px 5px 0px 5px; } }
+
+.chat-outer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0px 5px;
+  overflow-x: auto; }
+
+.chat-message {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px; }
+
+.chat-message-inner {
+  max-width: 70%;
+  background-color: #ff793f;
+  padding: 7px;
+  border-radius: 7px;
+  border-bottom-left-radius: 0px;
+  color: white;
+  font-size: 1.3em;
+  overflow-wrap: break-word;
+  user-select: text; }
+
+.chat-message.human-message > .chat-message-inner {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 0px;
+  background-color: #d1ccc0;
+  margin-left: auto; }
+
+.input-container {
+  display: flex;
+  border-top: 1px solid #84817a;
+  padding: 11px 2px;
+  margin-top: 5px; }
+
+#target {
+  width: 100%; }
+
+#loading > .chat-message-inner {
+  animation-name: loading;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0, 0, 0.3, 1);
+  animation-iteration-count: infinite; }
+
+.input {
+  user-select: text;
+  display: block;
+  outline: none;
+  border: none;
+  width: 100%;
+  font-size: 1.2em; }
+
+/*# sourceMappingURL=page.css.map */

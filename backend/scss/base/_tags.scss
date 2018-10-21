@@ -1,0 +1,4 @@
+@mixin tag($color) {
+	border: 2px solid $color;
+	font-size: 12px;
+}
