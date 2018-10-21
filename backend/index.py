@@ -44,10 +44,11 @@ def detect_intent_texts(project_id, session_id, text, language_code):
             print("University:", user_university)
 
         if response.query_result.intent.display_name == "setup_calendar":
-            #service = quickstart.auth()
+            print("TODO")
+            service = quickstart.auth()
             #print(quickstart.getCalendars(service))
 
-        return response.query_result.fulfillment_text
+    return response.query_result.fulfillment_text
 
 
 @app.route('/send_message', methods=['POST'])

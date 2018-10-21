@@ -10,8 +10,6 @@ def getPlaces(location, radius, keyword, type):
     url = ('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s&radius=%s&type=%s&keyword=%s&key=%s') % (location, radius, type, keyword, API_KEY)
     with urllib.request.urlopen(url) as response:
         jsonRaw = response.read()
-    #response = urllib.urlopen(url)
-    #jsonRaw = response.read()
     places = json.loads(jsonRaw)
     return places
 
@@ -34,7 +32,7 @@ def getUnisNearby(location, radius):
 
 # returns location of a specified place ID in
 # format of "lat, lng" coordinates
-def getPlaceLocation(place_id):
+def getPlaceIDLocation(place_id):
     url = ('https://maps.googleapis.com/maps/api/geocode/json?place_id=%s&key=%s') % (place_id, API_KEY)
     with urllib.request.urlopen(url) as response:
         jsonRaw = response.read()
@@ -42,7 +40,3 @@ def getPlaceLocation(place_id):
     lat = place['results'][0]['geometry']['location']['lat']
     lng = place['results'][0]['geometry']['location']['lng']
     return str(lat) + ',' + str(lng)
-
-if __name__ == '__main__':
-    # test, Edinburgh location ID given
-    print(getGymsNearby(getPlaceLocation('ChIJ92fw0IC4h0gRECQZZTqJEMk'), 1000))
