@@ -1,9 +1,10 @@
+import os
 import json
 
 def save_auth(token):
     with open('./tokencache.json', 'w') as fp:
-        json.write({
-            'token': token    
+        json.dump({
+            'token': token
         }, fp)
 
 def load_auth():
