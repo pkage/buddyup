@@ -87,6 +87,11 @@ def detect_intent_texts(project_id, session_id, text, language_code):
     session_client = dialogflow.SessionsClient()
     session = session_client.session_path(project_id, session_id)
 
+    c1 = parse_calendar.parse(json_data1)
+    c2 = parse_calendar.parse(json_data2)
+    busy = compare_user_calendars.get_busy_intervals([c1.busy_dates, c2.busy_dates])
+    free = compare_user_calendars.get_free_intervals(busy, datetime.datetime(2018, 10, 21), datetime.datetime(2018, 10,28))
+
     if text:
         text_input = dialogflow.types.TextInput(
             text=text, language_code=language_code)
@@ -105,12 +110,40 @@ def detect_intent_texts(project_id, session_id, text, language_code):
             print("University:", user_university)
 
         if response.query_result.intent.display_name == "setup_calendar":
-            c1 = parse_calendar.parse(json_data1)
-            c2 = parse_calendar.parse(json_data1)
-            busy = compare_user_calendars.get_busy_intervals([c1.busy_dates, c2.busy_dates])
-            print(busy)
-            free = compare_user_calendars.get_free_intervals(busy, datetime.datetime(2018, 10, 21), datetime.datetime(2018, 10,28))
-            print(free)
+            print("setup done")
+
+        if response.query_result.intent.display_name == 'calendar_getBusy':
+            friend = response.query_result.parameters["Name"]
+            string = "Here's when you and " + friend + " are both busy 😕:\n"
+            seperator = ""
+            for time in busy:
+                string += seperator
+                seperator = ", "
+                time1 = time[0].strftime("%Y/%m/%d %H:%M:%S") # From
+                time2 = time[1].strftime("%Y/%m/%d %H:%M:%S") # To
+                string += time1
+                string += " - "
+                string += time2
+                string += '\n'
+            string += " - I'm sure you'll find some suitable time though! 😊🤗"
+            response.query_result.fulfillment_text = string
+
+        if response.query_result.intent.display_name == 'calendar_getFree':
+            friend = response.query_result.parameters["Name"]
+            string = "You and " + friend + " have these free ⏰ in common in the upcoming week:\n"
+            seperator = ""
+            print(str(free))
+            for time in free:
+                string += seperator
+                seperator = ", "
+                time1 = time[0].strftime("%Y/%m/%d %H:%M:%S") # From
+                time2 = time[1].strftime("%Y/%m/%d %H:%M:%S") # To
+                string += time1
+                string += " - "
+                string += time2
+                string += '\n'
+            string += " - Time to hit the gym! 💪🏻💪🏻💪🏻"
+            response.query_result.fulfillment_text = string
 
     return response.query_result.fulfillment_text
 
