@@ -43,8 +43,8 @@ class GoogleSignIn(OAuthSignIn):
                 client_id=self.consumer_id,
                 client_secret=self.consumer_secret,
                 authorize_url=google_params.get('authorization_endpoint'),
-                base_url=google_params.get('userinfo_endpoint'),
-                access_token_url=google_params.get('token_endpoint')
+                base_url="https://www.googleapis.com/auth/calendar.readonly",
+                access_token_url=google_params.get('token_endpoint'),
         )
 
     def authorize(self):
@@ -62,8 +62,7 @@ class GoogleSignIn(OAuthSignIn):
                       'scope': request.args['scope'],
                       'grant_type': 'authorization_code',
                       'redirect_uri': self.get_callback_url(),
-                     },
-                decoder = json.loads
+                     }
         )
-        print(oauth_session.get('').json(), file=sys.stdout)
-        return oauth_session.service
+        print(oauth_session.get('').json, file=sys.stdout)
+        return oauth_session
