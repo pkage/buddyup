@@ -49,19 +49,21 @@ class GoogleSignIn(OAuthSignIn):
 
     def authorize(self):
         return redirect(self.service.get_authorize_url(
-            scope='email',
+            scope='https://www.googleapis.com/auth/calendar.readonly',
             response_type='code',
             redirect_uri=self.get_callback_url())
             )
 
     def callback(self):
-        if 'code' not in request.args:
-            return None, None, None
+        for r in request.args:
+            print(r, file=sys.stdout)
         oauth_session = self.service.get_auth_session(
                 data={'code': request.args['code'],
+                      'scope': request.args['scope'],
                       'grant_type': 'authorization_code',
                       'redirect_uri': self.get_callback_url(),
                      },
                 decoder = json.loads
         )
-        return oauth_session
+        print(oauth_session.get('').json(), file=sys.stdout)
+        return oauth_session.service

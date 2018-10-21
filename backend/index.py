@@ -16,7 +16,6 @@ from flask_login import login_user, logout_user, current_user, login_required
 from flask_login.login_manager import LoginManager
 from auth import GoogleSignIn, OAuthSignIn
 
-
 ################## to be saved
 user_location = "" # string
 nearbyUnis = {} # dictionary
@@ -53,7 +52,6 @@ def detect_intent_texts(project_id, session_id, text, language_code):
 
         if response.query_result.intent.display_name == "setup_calendar":
             print("TODO")
-            service = test()
 
     return response.query_result.fulfillment_text
 
@@ -78,8 +76,8 @@ def oauth_authorize(provider):
 @app.route('/callback/<provider>')
 def oauth_callback(provider):
     oauth = OAuthSignIn.get_provider(provider)
-    session = oauth.callback()
-    print(type(session), file=sys.stdout)
+    service = oauth.callback()
+    print(quickstart.getCalendars(oauth), file=sys.stdout)
     '''
     if email is None:
         # I need a valid email address for my user identification
@@ -88,7 +86,6 @@ def oauth_callback(provider):
     # Log in the user, by default remembering them for their next visit
     # unless they log out.
     '''
-
     return redirect(url_for('index'))
 
 @app.route('/login', methods=['GET', 'POST'])
