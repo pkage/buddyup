@@ -41,6 +41,7 @@ def getCalendars(service):
         id = cal["id"]
         desc = cal["summary"]
         calendars[id] = desc
+    print(calendars)
     return calendars
 
 # authenticates the user and gets service started
